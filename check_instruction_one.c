@@ -6,7 +6,7 @@
 /*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 20:21:55 by hchowdhu          #+#    #+#             */
-/*   Updated: 2025/02/27 20:22:31 by hchowdhu         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:54:12 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	swap_b_check(t_list **stack_b)
 	t_list	*tmp;
 	t_list	*tmp2;
 
+    if (*stack_b == NULL)
+		return ;
 	tmp = *stack_b;
 	tmp2 = tmp->next;
 	*stack_b = tmp2;
