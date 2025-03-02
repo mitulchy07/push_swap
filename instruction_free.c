@@ -6,7 +6,7 @@
 /*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:54:32 by hchowdhu          #+#    #+#             */
-/*   Updated: 2025/02/27 20:20:08 by hchowdhu         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:05:08 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	check_error_arg(char **av)
 	if (!av[0])
 	{
 		free_tab(av);
-		write_error();
+		exit(0);
 	}
 	while (av[i] && av)
 	{
