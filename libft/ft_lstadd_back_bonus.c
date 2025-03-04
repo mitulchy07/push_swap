@@ -6,7 +6,7 @@
 /*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 13:35:01 by hchowdhu          #+#    #+#             */
-/*   Updated: 2025/02/27 20:20:08 by hchowdhu         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:07:15 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,3 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 		(*lst) = new;
 }
-/*
-int	main()
-{
-	t_list	*node;
-	
-	node = ft_lstnew("Hello");
-	node->next = ft_lstnew(" I ");
-	node->next->next = ft_lstnew("am a ");
-	node->next->next->next = ft_lstnew("list");
-	node->next->next->next->next = NULL;
-
-	ft_lstadd_back(&node, ft_lstnew(" back"));
-	while(node)
-	{
-		printf("%s", (char *)node->content);
-		node = node->next;
-	}
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 20:02:07 by hchowdhu          #+#    #+#             */
-/*   Updated: 2025/02/27 20:02:11 by hchowdhu         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:07:56 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,4 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-/*
-int	main()
-{
-	size_t	i = 0;
-	size_t	n = 3;
-	char	str[] = "hello";
-	char    str1[] = "hello";
-	ft_bzero(str, n);
-	while(i < 4)
-	{
-		printf("%c\n", str[i]);
-		i++;
-	}
-	i = 0;
-	bzero(str1, n);
-	while ( i < 4)
-	{
-		printf("%c", str1[i]);
-		i++;
-	}
-	return (0);
-}
-*/
+

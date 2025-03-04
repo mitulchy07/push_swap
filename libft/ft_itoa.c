@@ -6,7 +6,7 @@
 /*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:25:38 by hchowdhu          #+#    #+#             */
-/*   Updated: 2025/02/27 20:20:08 by hchowdhu         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:07:25 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,3 @@ char	*ft_itoa(int n)
 		*(str + len) = '-';
 	return (str);
 }
-
-/*
-#include <limits.h>
-int	main()
-{
-	printf("%s\n", ft_itoa(INT_MIN));
-}
-*/
