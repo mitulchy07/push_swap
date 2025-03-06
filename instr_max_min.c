@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-int	returnMaxOrMin(int nb, int *maxNMin, int size)
+int	return_max_or_min_value(int nb, int *maxNMin, int size)
 {
 	if (nb > maxNMin[0])
 		return (maxNMin[2]);
@@ -22,7 +22,7 @@ int	returnMaxOrMin(int nb, int *maxNMin, int size)
 	return (size + 1);
 }
 
-int	maxOrMin(t_list *stackA, int nb, int size)
+int	get_max_or_min_value(t_list *stackA, int nb, int size)
 {
 	int	maxNMin[5];
 
@@ -46,10 +46,10 @@ int	maxOrMin(t_list *stackA, int nb, int size)
 		stackA = stackA->next;
 		maxNMin[4]++;
 	}
-	return (returnMaxOrMin(nb, maxNMin, size));
+	return (return_max_or_min_value(nb, maxNMin, size));
 }
 
-int	minNumber(int a, int b)
+int	min_number_in_stack(int a, int b)
 {
 	int	a1;
 	int	b1;
@@ -67,7 +67,7 @@ int	minNumber(int a, int b)
 	return (b1);
 }
 
-int	maxNumber(int a, int b)
+int	max_number_in_stack(int a, int b)
 {
 	if (a < 0)
 		a *= -1;
@@ -81,7 +81,7 @@ int	maxNumber(int a, int b)
 		return (a);
 }
 
-void	searchMin(t_list **stackA, int size)
+void	find_minimum_in_stack(t_list **stackA, int size)
 {
 	int		pos;
 	int		posMin;
@@ -103,6 +103,6 @@ void	searchMin(t_list **stackA, int size)
 		pos++;
 	}
 	tmp = NULL;
-	pos = countMovesB(posMin, size);
-	pushMinToTop(pos, 0, stackA, &tmp);
+	pos = count_moves_in_stack_b(posMin, size);
+	push_minimum_to_top(pos, 0, stackA, &tmp);
 }

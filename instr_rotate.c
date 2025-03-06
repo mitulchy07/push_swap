@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	rotateA(t_list **stackA)
+void	rotate_stack_a(t_list **stackA)
 {
 	t_list	*last;
 	t_list	*first;
@@ -31,7 +31,7 @@ void	rotateA(t_list **stackA)
 	return ;
 }
 
-void	rotateB(t_list **stackB)
+void	rotate_stack_b(t_list **stackB)
 {
 	t_list	*last;
 	t_list	*first;
@@ -49,7 +49,7 @@ void	rotateB(t_list **stackB)
 	return ;
 }
 
-void	rotateBoth(t_list **stackA, t_list **stackB)
+void	rotate_both_stacks(t_list **stackA, t_list **stackB)
 {
 	t_list	*last;
 	t_list	*first;

@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-int	countMoves(int min, int len, int size)
+int	count_total_moves(int min, int len, int size)
 {
 	int	i;
 
@@ -21,26 +21,26 @@ int	countMoves(int min, int len, int size)
 		min = min - size;
 	if (len > (size / 2))
 		len = len - size;
-	i = minNumber(len, min);
+	i = min_number_in_stack(len, min);
 	return (i);
 }
 
-int	countMovesB(int len, int size)
+int	count_moves_in_stack_b(int len, int size)
 {
 	if (len > (size / 2))
 		len = len - size;
 	return (len);
 }
 
-int	countMovesA(t_list *stackA, int nb, int size)
+int	count_moves_in_stack_a(t_list *stackA, int nb, int size)
 {
 	t_list	*tmp;
 	int		i;
 
 	tmp = stackA;
-	i = maxOrMin(stackA, nb, size);
+	i = get_max_or_min_value(stackA, nb, size);
 	if (i != size + 1)
-		return (countMovesB(i, size));
+		return (count_moves_in_stack_b(i, size));
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	if (nb < stackA->number && nb > tmp->number)
@@ -51,10 +51,10 @@ int	countMovesA(t_list *stackA, int nb, int size)
 		stackA = stackA->next;
 		i++;
 	}
-	return (countMovesB(i, size));
+	return (count_moves_in_stack_b(i, size));
 }
 
-int	*copyStackNumber(t_list *stackA, int size)
+int	*copy_stack_number_values(t_list *stackA, int size)
 {
 	int	*arr;
 	int	i;
@@ -71,19 +71,19 @@ int	*copyStackNumber(t_list *stackA, int size)
 	return (arr);
 }
 
-int	*copyIntArray(int	*arr, int size)
+int	*copy_integer_array(int	*arr, int size)
 {
 	int	i;
-	int	*cpy;
+	int	*copy;
 
 	i = 0;
-	cpy = (int *) malloc (sizeof(int) * size);
-	if (!arr || !cpy)
+	copy = (int *) malloc (sizeof(int) * size);
+	if (!arr || !copy)
 		write_error();
 	while (i < size)
 	{
-		cpy[i] = arr[i];
+		copy[i] = arr[i];
 		i++;
 	}
-	return (cpy);
+	return (copy);
 }

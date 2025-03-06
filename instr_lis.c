@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	updateLisAndPrev(int *lis, int *prev, int *stackNumbers, int size)
+void	update_lis_prev_val(int *lis, int *prev, int *stackNumbers, int size)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ void	updateLisAndPrev(int *lis, int *prev, int *stackNumbers, int size)
 	}
 }
 
-int	findMaxLisLength(int *lis, int size, int *endIndex)
+int	find_max_length_of_lis(int *lis, int size, int *endIndex)
 {
 	int	maxLisLength;
 	int	i;
@@ -56,7 +56,7 @@ int	findMaxLisLength(int *lis, int size, int *endIndex)
 	return (maxLisLength);
 }
 
-int	*constructLis(int *stackNumbers, int *prev, int lisLength, int endIndex)
+int	*construct_lis(int *stackNumbers, int *prev, int lisLength, int endIndex)
 {
 	int	*result;
 	int	i;
@@ -75,7 +75,7 @@ int	*constructLis(int *stackNumbers, int *prev, int lisLength, int endIndex)
 	return (result);
 }
 
-int	*findLisAndLen(int *stackNumbers, int size, int *len)
+int	*find_lis_and_length(int *stackNumbers, int size, int *len)
 {
 	int	*lis;
 	int	*prev;
@@ -85,13 +85,13 @@ int	*findLisAndLen(int *stackNumbers, int size, int *len)
 	prev = (int *)malloc(size * sizeof(int));
 	if (!lis || !prev)
 		write_error();
-	initializeLisAndPrev(lis, prev, size);
-	updateLisAndPrev(lis, prev, stackNumbers, size);
-	*len = findMaxLisLength(lis, size, &endIndex);
-	return (constructLis(stackNumbers, prev, *len, endIndex));
+	init_lis_prev_val(lis, prev, size);
+	update_lis_prev_val(lis, prev, stackNumbers, size);
+	*len = find_max_length_of_lis(lis, size, &endIndex);
+	return (construct_lis(stackNumbers, prev, *len, endIndex));
 }
 
-int	*defineLis(int *stackNumbers, int size, int *len)
+int	*define_lis(int *stackNumbers, int size, int *len)
 {
-	return (findLisAndLen(stackNumbers, size, len));
+	return (find_lis_and_length(stackNumbers, size, len));
 }

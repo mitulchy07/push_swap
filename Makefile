@@ -1,10 +1,10 @@
 NAME =	push_swap
 
-SRC	=	push_swap.c utils.c instrcutionPushSwap.c \
-        instructionRotate.c instructionRevRotate.c \
-        instructionMaxnmin.c instructionCalculateNCopy.c \
-        instructionPostionNCombination.c instructionLIS.c \
-        instructionSort.c instructionFree.c
+SRC	=	push_swap.c utils.c instr_push_swap.c \
+        instr_rotate.c instr_rev_rotate.c \
+        instr_max_min.c instr_calc_copy.c \
+        instr_pos_comb.c instr_lis.c \
+        instr_sort.c instr_free.c
 
 LIBFT	=	libft/libft.a
 OBJ		=	$(SRC:.c=.o)

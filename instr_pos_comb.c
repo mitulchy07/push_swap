@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-int	moveRemainingNumbers(t_list *stackA, int size, int *arr, int len)
+int	move_remaining_numbers_to_b(t_list *stackA, int size, int *arr, int len)
 {
 	int	pos;
 	int	i;
@@ -36,7 +36,7 @@ int	moveRemainingNumbers(t_list *stackA, int size, int *arr, int len)
 	return (size);
 }
 
-int	findBestCombinationHelper(int *arrA, int *arrB, int *tmp, int size)
+int	helper_find_best_combination(int *arrA, int *arrB, int *tmp, int size)
 {
 	int	i;
 	int	pos;
@@ -54,7 +54,7 @@ int	findBestCombinationHelper(int *arrA, int *arrB, int *tmp, int size)
 	return (pos);
 }
 
-int	findBestCombination(int *arrA, int *arrB, int size)
+int	find_best_combination_of_moves(int *arrA, int *arrB, int size)
 {
 	int	*tmp;
 	int	i;
@@ -67,7 +67,7 @@ int	findBestCombination(int *arrA, int *arrB, int size)
 	{
 		if ((arrA[i] > 0 && arrB[i] > 0)
 			|| (arrA[i] < 0 && arrB[i] < 0))
-			tmp[i] = maxNumber(arrA[i], arrB[i]);
+			tmp[i] = max_number_in_stack(arrA[i], arrB[i]);
 		else
 		{
 			if (arrA[i] < 0)
@@ -77,29 +77,29 @@ int	findBestCombination(int *arrA, int *arrB, int size)
 			tmp[i] = arrA[i] + arrB[i];
 		}
 	}
-	return (findBestCombinationHelper(arrA, arrB, tmp, size));
+	return (helper_find_best_combination(arrA, arrB, tmp, size));
 }
 
-int	pushMinToTop(int a, int b, t_list **stackA, t_list **stackB)
+int	push_minimum_to_top(int a, int b, t_list **stackA, t_list **stackB)
 {
 	while (a < 0 && b < 0)
 	{
-		reverseRotateBoth(stackA, stackB);
+		reverse_rotate_both_stacks(stackA, stackB);
 		a++;
 		b++;
 	}
 	while (a > 0 && b > 0)
 	{
-		rotateBoth(stackA, stackB);
+		rotate_both_stacks(stackA, stackB);
 		a--;
 		b--;
 	}
 	if (a < 0)
 		while (a++ < 0)
-			reverseRotateA(stackA);
+			reverse_rotate_stack_a(stackA);
 	else if (a > 0)
 		while (a-- > 0)
-			rotateA(stackA);
+			rotate_stack_a(stackA);
 	return (b);
 }
 
@@ -118,16 +118,16 @@ int	findBestPositionB(t_list **stackB, int sizeB,
 	if (!arrB || !arrA)
 		write_error();
 	while (++i < sizeB)
-		arrB[i] = countMovesB(i, sizeB);
+		arrB[i] = count_moves_in_stack_b(i, sizeB);
 	i = -1;
 	while (++i < sizeB && tmpB != NULL)
 	{
-		arrA[i] = countMovesA(*stackA, tmpB->number, sizeA);
+		arrA[i] = count_moves_in_stack_a(*stackA, tmpB->number, sizeA);
 		tmpB = tmpB->next;
 	}
-	i = findBestCombination(copyIntArray(arrA, sizeB),
-			copyIntArray(arrB, sizeB), sizeB);
-	i = pushMinToTop(arrA[i], arrB[i], stackA, stackB);
+	i = find_best_combination_of_moves(copy_integer_array(arrA, sizeB),
+			copy_integer_array(arrB, sizeB), sizeB);
+	i = push_minimum_to_top(arrA[i], arrB[i], stackA, stackB);
 	free(arrA);
 	free(arrB);
 	return (i);

@@ -15,85 +15,61 @@
 
 # include "./libft/libft.h"
 
-int		checkSorted(t_list **stackA);
-int		pushSwapStrlen(char *str);
-void	freeTab(char **tab);
-void	checkErrorArg(char **av);
-int		isNumeric(char *str);
-void	freeAtoi(t_list **stack, char **argv, int size);
-int		ftAtoi(const char *str, t_list **stack, char **argv, int size);
+int		check_if_sorted(t_list **stackA);
+int		push_swap_strlen(char *str);
+void	free_tab_memory(char **tab);
+void	check_argument_error(char **av);
+int		is_numeric_string(char *str);
+void	free_atoi_memory(t_list **stack, char **argv, int size);
+int		ft_atoi(const char *str, t_list **stack, char **argv, int size);
 void	sort_list(t_list **stack_a, t_list **stack_b, int size);
 int		initialize_list(t_list **stack_a, int argc, char **argv, int size);
-int		checkDuplicate(t_list *stackA, int value);
-void	checkInverted(t_list **stackA, int argc);
-void	deleteList(t_list **stack);
+int		check_for_duplicates(t_list *stackA, int value);
+void	check_if_inverted(t_list **stackA, int argc);
+void	delete_linked_list(t_list **stack);
 
-void	swapA(t_list **stackA);
-void	swapB(t_list **stackB);
-void	swapBoth(t_list **stackA, t_list **stackB);
-void	pushA(t_list **stackB, t_list **stackA);
-void	pushB(t_list **stackA, t_list **stackB);
-void	rotateA(t_list **stackA);
-void	rotateB(t_list **stackB);
-void	rotateBoth(t_list **stackA, t_list **stackB);
-void	reverseRotateA(t_list **stackA);
-void	reverseRotateB(t_list **stackB);
-void	reverseRotateBoth(t_list **stackA, t_list **stackB);
-void	sortThree(t_list **stackA);
-void	sortFive(t_list **stackA, t_list **stackB);
-void	freeTab(char **tab);
+void	swap_stack_a(t_list **stackA);
+void	swap_stack_b(t_list **stackB);
+void	swap_both_stacks(t_list **stackA, t_list **stackB);
+void	push_to_stack_a(t_list **stackB, t_list **stackA);
+void	push_to_stack_b(t_list **stackA, t_list **stackB);
+void	rotate_stack_a(t_list **stackA);
+void	rotate_stack_b(t_list **stackB);
+void	rotate_both_stacks(t_list **stackA, t_list **stackB);
+void	reverse_rotate_stack_a(t_list **stackA);
+void	reverse_rotate_stack_b(t_list **stackB);
+void	reverse_rotate_both_stacks(t_list **stackA, t_list **stackB);
+void	sort_three_elements(t_list **stackA);
+void	sort_five_elements(t_list **stackA, t_list **stackB);
+void	free_tab_memory(char **tab);
 void	check_arguments(int argc, char **argv, t_list **stack_a);
-void	moveToB(t_list **stackA, t_list **stackB, int *arr, int len);
-void	moveToA(t_list **stackA, t_list **stackB);
+void	move_to_stack_b(t_list **stackA, t_list **stackB, int *arr, int len);
+void	move_to_stack_a(t_list **stackA, t_list **stackB);
 int		findBestPositionB(t_list **stackB, int sizeB,
             t_list **stackA, int sizeA);
-int		moveRemainingNumbers(t_list *stackA, int size, int *arr, int len);
-int		findBestCombination(int *arrA, int *arrB, int size);
-int		findBestCombinationHelper(int *arrA, int *arrB,
+int		move_remaining_numbers_to_b(t_list *stackA, int size, int *arr, int len);
+int		find_best_combination_of_moves(int *arrA, int *arrB, int size);
+int		helper_find_best_combination(int *arrA, int *arrB,
             int *tmp, int size);
-int		pushMinToTop(int a, int b, t_list **stackA, t_list **stackB);
-void	searchMin(t_list **stackA, int size);
+int		push_minimum_to_top(int a, int b, t_list **stackA, t_list **stackB);
+void	find_minimum_in_stack(t_list **stackA, int size);
 
-int		*copyStackNumber(t_list *stackA, int size);
-int		*copyIntArray(int	*arr, int size);
+int		*copy_stack_number_values(t_list *stackA, int size);
+int		*copy_integer_array(int	*arr, int size);
 
-int		countMoves(int min, int len, int size);
-int		countMovesA(t_list *stackA, int nb, int size);
-int		countMovesB(int len, int size);
-int		maxNumber(int a, int b);
-int		minNumber(int a, int b);
-int		maxOrMin(t_list *stackA, int nb, int size);
-int		returnMaxOrMin(int nb, int *maxNMin, int size);
+int		count_total_moves(int min, int len, int size);
+int		count_moves_in_stack_a(t_list *stackA, int nb, int size);
+int		count_moves_in_stack_b(int len, int size);
+int		max_number_in_stack(int a, int b);
+int		min_number_in_stack(int a, int b);
+int		get_max_or_min_value(t_list *stackA, int nb, int size);
+int		return_max_or_min_value(int nb, int *maxNMin, int size);
 
-int		*constructLis(int *stackNumbers, int *prev, int lisLength, int endIndex);
-int		findMaxLisLength(int *lis, int size, int *endIndex);
-void	updateLisAndPrev(int *lis, int *prev, int *stackNumbers, int size);
-void	initializeLisAndPrev(int *lis, int *prev, int size);
-int		*defineLis(int *stackNumbers, int size, int *len);
-int		*findLisAndLen(int *stackNumbers, int size, int *len);
-
-int		check_len(char *str);
-void	check_free_tab(char **tab);
-int		check_numeric(char *str);
-int		check_atoi(const char *str, t_list **stack, char **argv, int size);
-void	check_error_args(char **av);
-void	check_args3(int argc, char **argv, t_list **stack_a);
-void	check_delete_list(t_list **stack);
-int		check_dup(t_list *stack_a, int check);
-void	check_instruction(t_list **stack_a, t_list **stack_b, char *str);
-void	check_instruction_rrr(t_list **stack_a, t_list **stack_b, char *str);
-int		check_list(t_list **stack_a, int argc, char **argv, int size);
-int		ok_or_ko(t_list **stack_a);
-void	swap_a_check(t_list **stack_a);
-void	swap_b_check(t_list **stack_b);
-void	swap_s_check(t_list **stack_a, t_list **stack_b);
-void	push_a_check(t_list **stack_b, t_list **stack_a);
-void	push_b_check(t_list **stack_a, t_list **stack_b);
-void	rotate_a_check(t_list **stack_a);
-void	rotate_b_check(t_list **stack_b);
-void	rotate_r_check(t_list **stack_a, t_list **stack_b);
-void	reverse_rotate_a_check(t_list **stack_a);
-void	reverse_rotate_b_check(t_list **stack_b);
-void	reverse_rotate_r_check(t_list **stack_a, t_list **stack_b);
+int		*construct_lis(int *stackNumbers, int *prev, int lisLength, int endIndex);
+int		find_max_length_of_lis(int *lis, int size, int *endIndex);
+void	update_lis_prev_val(int *lis, int *prev, int *stackNumbers, int size);
+void	init_lis_prev_val(int *lis, int *prev, int size);
+int		*define_lis(int *stackNumbers, int size, int *len);
+int		*find_lis_and_length(int *stackNumbers, int size, int *len);
 
 #endif

@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	swapA(t_list **stackA)
+void	swap_stack_a(t_list **stackA)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -27,7 +27,7 @@ void	swapA(t_list **stackA)
 	return ;
 }
 
-void	swapB(t_list **stackB)
+void	swap_stack_b(t_list **stackB)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -41,7 +41,7 @@ void	swapB(t_list **stackB)
 	return ;
 }
 
-void	swapBoth(t_list **stackA, t_list **stackB)
+void	swap_both_stacks(t_list **stackA, t_list **stackB)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -62,7 +62,7 @@ void	swapBoth(t_list **stackA, t_list **stackB)
 	return ;
 }
 
-void	pushA(t_list **stackB, t_list **stackA)
+void	push_to_stack_a(t_list **stackB, t_list **stackA)
 {
 	t_list	*tmp;
 
@@ -76,7 +76,7 @@ void	pushA(t_list **stackB, t_list **stackA)
 	return ;
 }
 
-void	pushB(t_list **stackA, t_list **stackB)
+void	push_to_stack_b(t_list **stackA, t_list **stackB)
 {
 	t_list	*tmp;
 

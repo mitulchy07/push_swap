@@ -13,21 +13,21 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	freeAtoi(t_list **stack, char **argv, int size)
+void	free_atoi_memory(t_list **stack, char **argv, int size)
 {
 	if (size == 2)
 	{
-		freeTab(argv);
+		free_tab_memory(argv);
 		write_error();
 	}
 	else
 	{
-		deleteList(stack);
+		delete_linked_list(stack);
 		write_error();
 	}
 }
 
-int	ftAtoi(const char *str, t_list **stack, char **argv, int size)
+int	ft_atoi(const char *str, t_list **stack, char **argv, int size)
 {
 	unsigned int		i;
 	int					sign;
@@ -45,38 +45,38 @@ int	ftAtoi(const char *str, t_list **stack, char **argv, int size)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			freeAtoi(stack, argv, size);
+			free_atoi_memory(stack, argv, size);
 		number = (str[i] - '0') + (number * 10);
 		i++;
 	}
 	if ((number > 2147483648 && sign == -1)
 		|| (number > 2147483647 && sign == 1))
-		freeAtoi(stack, argv, size);
+		free_atoi_memory(stack, argv, size);
 	return (number * sign);
 }
 
-void	checkErrorArg(char **av)
+void	check_argument_error(char **av)
 {
 	int	i;
 
 	i = 0;
 	if (!av[0])
 	{
-		freeTab(av);
+		free_tab_memory(av);
 		exit(0);
 	}
 	while (av[i] && av)
 	{
-		if (isNumeric(av[i]))
+		if (is_numeric_string(av[i]))
 		{
-			freeTab(av);
+			free_tab_memory(av);
 			write_error();
 		}
 		i++;
 	}
 }
 
-void	freeTab(char **tab)
+void	free_tab_memory(char **tab)
 {
 	int	i;
 
@@ -91,7 +91,7 @@ void	freeTab(char **tab)
 	free(tab);
 }
 
-void	deleteList(t_list **stack)
+void	delete_linked_list(t_list **stack)
 {
 	t_list	*tmp;
 

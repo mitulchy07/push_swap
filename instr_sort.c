@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	sortThree(t_list **stackA)
+void	sort_three_elements(t_list **stackA)
 {
 	int		i;
 	int		j;
@@ -34,27 +34,27 @@ void	sortThree(t_list **stackA)
 		x = tmp->number;
 		if ((i > j && j < x && x > i)
 			|| (i > j && j > x && x < i) || (i < j && j > x && x > i))
-			swapA(stackA);
+			swap_stack_a(stackA);
 		if (i > j && j < x && x < i)
-			rotateA(stackA);
+			rotate_stack_a(stackA);
 		if (i < j && j > x && x < i)
-			reverseRotateA(stackA);
+			reverse_rotate_stack_a(stackA);
 	}
 }
 
-void	sortFive(t_list **stackA, t_list **stackB)
+void	sort_five_elements(t_list **stackA, t_list **stackB)
 {
 	int	i;
 
 	i = 2;
 	while (i-- > 0)
-		pushB(stackA, stackB);
-	sortThree(stackA);
-	moveToA(stackA, stackB);
-	searchMin(stackA, ft_lstsize(*stackA));
+		push_to_stack_b(stackA, stackB);
+	sort_three_elements(stackA);
+	move_to_stack_a(stackA, stackB);
+	find_minimum_in_stack(stackA, ft_lstsize(*stackA));
 }
 
-void	moveToA(t_list **stackA, t_list **stackB)
+void	move_to_stack_a(t_list **stackA, t_list **stackB)
 {
 	int	bestPos;
 	int	sizeA;
@@ -68,42 +68,42 @@ void	moveToA(t_list **stackA, t_list **stackB)
 		if (bestPos < 0)
 		{
 			while (bestPos++ < 0)
-				reverseRotateB(stackB);
+				reverse_rotate_stack_b(stackB);
 		}
 		else if (bestPos > 0)
 		{
 			while (bestPos-- > 0)
-				rotateB(stackB);
+				rotate_stack_b(stackB);
 		}
-		pushA(stackB, stackA);
+		push_to_stack_a(stackB, stackA);
 		sizeA++;
 		sizeB--;
 	}
 }
 
-void	moveToB(t_list **stackA, t_list **stackB, int *arr, int len)
+void	move_to_stack_b(t_list **stackA, t_list **stackB, int *arr, int len)
 {
 	int	i;
 	int	sizeA;
 
 	sizeA = ft_lstsize(*stackA);
-	i = moveRemainingNumbers(*stackA, sizeA, arr, len);
+	i = move_remaining_numbers_to_b(*stackA, sizeA, arr, len);
 	while (i != -1)
 	{
 		if (i > 0)
 		{
 			while (i > 0)
 			{
-				rotateA(stackA);
+				rotate_stack_a(stackA);
 				i--;
 			}
 		}
-		pushB(stackA, stackB);
-		i = moveRemainingNumbers(*stackA, --sizeA, arr, len);
+		push_to_stack_b(stackA, stackB);
+		i = move_remaining_numbers_to_b(*stackA, --sizeA, arr, len);
 	}
 }
 
-int	pushSwapStrlen(char *str)
+int	push_swap_strlen(char *str)
 {
 	int	i;
 	int	j;

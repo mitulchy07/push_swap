@@ -12,7 +12,7 @@
 
 #include "./libft/libft.h"
 
-void	reverseRotateA(t_list **stackA)
+void	reverse_rotate_stack_a(t_list **stackA)
 {
 	t_list	*last;
 	t_list	*tmp;
@@ -30,7 +30,7 @@ void	reverseRotateA(t_list **stackA)
 	write(1, "rra\n", 4);
 }
 
-void	reverseRotateB(t_list **stackB)
+void	reverse_rotate_stack_b(t_list **stackB)
 {
 	t_list	*last;
 	t_list	*tmp;
@@ -48,7 +48,7 @@ void	reverseRotateB(t_list **stackB)
 	write(1, "rrb\n", 4);
 }
 
-void	reverseRotateBoth(t_list **stackA, t_list **stackB)
+void	reverse_rotate_both_stacks(t_list **stackA, t_list **stackB)
 {
 	t_list	*last;
 	t_list	*tmp;

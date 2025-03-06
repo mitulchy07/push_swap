@@ -13,7 +13,7 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	initializeLisAndPrev(int *lis, int *prev, int size)
+void	init_lis_prev_val(int *lis, int *prev, int size)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	initializeLisAndPrev(int *lis, int *prev, int size)
 	}
 }
 
-int	checkDuplicate(t_list *stackA, int value)
+int	check_for_duplicates(t_list *stackA, int value)
 {
 	while (stackA->next != NULL)
 	{
@@ -39,7 +39,7 @@ int	checkDuplicate(t_list *stackA, int value)
 	return (1);
 }
 
-void	checkInverted(t_list **stackA, int argc)
+void	check_if_inverted(t_list **stackA, int argc)
 {
 	t_list	*current;
 	t_list	*next;
@@ -54,10 +54,10 @@ void	checkInverted(t_list **stackA, int argc)
 		next = next->next;
 	}
 	if (argc > 1)
-		swapA(stackA);
+		swap_stack_a(stackA);
 }
 
-int	isNumeric(char *str)
+int	is_numeric_string(char *str)
 {
 	int	i;
 
@@ -73,7 +73,7 @@ int	isNumeric(char *str)
 	return (1);
 }
 
-int	checkSorted(t_list **stackA)
+int	check_if_sorted(t_list **stackA)
 {
 	t_list	*current;
 	t_list	*next;
