@@ -1,75 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructionRotate.c                               :+:      :+:    :+:   */
+/*   instr_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2025/01/29 19:47:39 by hchowdhu          #+#    #+#             */
-/*   updated: 2025/02/27 20:20:08 by hchowdhu         ###   ########.fr       */
+/*   Created: 2025/01/29 19:49:47 by hchowdhu          #+#    #+#             */
+/*   Updated: 2025/03/04 14:08:34 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-void	rotate_stack_a(t_list **stackA)
+void	rotate_stack_a(t_list **stack_a)
 {
 	t_list	*last;
 	t_list	*first;
 
-	if (*stackA == NULL || (*stackA)->next == NULL)
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
-	last = *stackA;
-	first = *stackA;
+	last = *stack_a;
+	first = *stack_a;
 	while (last->next != NULL)
 		last = last->next;
-	*stackA = first->next;
+	*stack_a = first->next;
 	first->next = NULL;
 	last->next = first;
 	write(1, "ra\n", 3);
 	return ;
 }
 
-void	rotate_stack_b(t_list **stackB)
+void	rotate_stack_b(t_list **stack_b)
 {
 	t_list	*last;
 	t_list	*first;
 
-	if (*stackB == NULL || (*stackB)->next == NULL)
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return ;
-	last = *stackB;
-	first = *stackB;
+	last = *stack_b;
+	first = *stack_b;
 	while (last->next != NULL)
 		last = last->next;
-	*stackB = first->next;
+	*stack_b = first->next;
 	first->next = NULL;
 	last->next = first;
 	write(1, "rb\n", 3);
 	return ;
 }
 
-void	rotate_both_stacks(t_list **stackA, t_list **stackB)
+void	rotate_both_stacks(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*last;
 	t_list	*first;
 
-	if (*stackA == NULL || (*stackA)->next == NULL)
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
-	last = *stackA;
-	first = *stackA;
+	last = *stack_a;
+	first = *stack_a;
 	while (last->next != NULL)
 		last = last->next;
-	*stackA = first->next;
+	*stack_a = first->next;
 	first->next = NULL;
 	last->next = first;
-	if (*stackB == NULL || (*stackB)->next == NULL)
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return ;
-	last = *stackB;
-	first = *stackB;
+	last = *stack_b;
+	first = *stack_b;
 	while (last->next != NULL)
 		last = last->next;
-	*stackB = first->next;
+	*stack_b = first->next;
 	first->next = NULL;
 	last->next = first;
 	write(1, "rr\n", 3);

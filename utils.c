@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchowdhu <hchowdhu@student.42.fr>               +#+  +:+       +#+        */
+/*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 19:50:36 by hchowdhu          #+#    #+#             */
-/*   Updated: 2025/03/04 13:21:45 by hchowdhu            ###   ########.fr       */
+/*   Created: 2025/01/29 19:49:47 by hchowdhu          #+#    #+#             */
+/*   Updated: 2025/03/04 14:08:34 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,25 @@ void	init_lis_prev_val(int *lis, int *prev, int size)
 	}
 }
 
-int	check_for_duplicates(t_list *stackA, int value)
+int	check_for_duplicates(t_list *stack_a, int value)
 {
-	while (stackA->next != NULL)
+	while (stack_a->next != NULL)
 	{
-		if (stackA->number == value)
+		if (stack_a->number == value)
 		{
 			return (-1);
 		}
-		stackA = stackA->next;
+		stack_a = stack_a->next;
 	}
 	return (1);
 }
 
-void	check_if_inverted(t_list **stackA, int argc)
+void	check_if_inverted(t_list **stack_a, int argc)
 {
 	t_list	*current;
 	t_list	*next;
 
-	current = *stackA;
+	current = *stack_a;
 	next = current->next;
 	while (next != NULL)
 	{
@@ -54,7 +54,7 @@ void	check_if_inverted(t_list **stackA, int argc)
 		next = next->next;
 	}
 	if (argc > 1)
-		swap_stack_a(stackA);
+		swap_stack_a(stack_a);
 }
 
 int	is_numeric_string(char *str)
@@ -73,12 +73,12 @@ int	is_numeric_string(char *str)
 	return (1);
 }
 
-int	check_if_sorted(t_list **stackA)
+int	check_if_sorted(t_list **stack_a)
 {
 	t_list	*current;
 	t_list	*next;
 
-	current = *stackA;
+	current = *stack_a;
 	next = current->next;
 	while (next != NULL)
 	{

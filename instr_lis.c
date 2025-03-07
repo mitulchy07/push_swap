@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instrctionLIS.c                                   :+:      :+:    :+:   */
+/*   instr_lis.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: hchowdhu <hchowdhu@student.42.fr>               +#+  +:+       +#+        */
+/*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2025/01/29 19:47:05 by hchowdhu          #+#    #+#             */
-/*   updated: 2025/03/04 13:02:21 by hchowdhu            ###   ########.fr       */
+/*   Created: 2025/01/29 19:49:47 by hchowdhu          #+#    #+#             */
+/*   Updated: 2025/03/04 14:08:34 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,28 @@ void	update_lis_prev_val(int *lis, int *prev, int *stackNumbers, int size)
 	}
 }
 
-int	find_max_length_of_lis(int *lis, int size, int *endIndex)
+int	find_max_length_of_lis(int *lis, int size, int *end_index)
 {
-	int	maxLisLength;
+	int	max_lis_length;
 	int	i;
 
-	maxLisLength = 0;
-	*endIndex = 0;
+	max_lis_length = 0;
+	*end_index = 0;
 	i = 0;
 	while (i < size)
 	{
-		if (lis[i] > maxLisLength)
+		if (lis[i] > max_lis_length)
 		{
-			maxLisLength = lis[i];
-			*endIndex = i;
+			max_lis_length = lis[i];
+			*end_index = i;
 		}
 		i++;
 	}
 	free(lis);
-	return (maxLisLength);
+	return (max_lis_length);
 }
 
-int	*construct_lis(int *stackNumbers, int *prev, int lisLength, int endIndex)
+int	*construct_lis(int *stackNumbers, int *prev, int lisLength, int end_index)
 {
 	int	*result;
 	int	i;
@@ -65,10 +65,10 @@ int	*construct_lis(int *stackNumbers, int *prev, int lisLength, int endIndex)
 	if (!result)
 		write_error();
 	i = lisLength - 1;
-	while (endIndex >= 0)
+	while (end_index >= 0)
 	{
-		result[i] = stackNumbers[endIndex];
-		endIndex = prev[endIndex];
+		result[i] = stackNumbers[end_index];
+		end_index = prev[end_index];
 		i--;
 	}
 	free(prev);
@@ -79,7 +79,7 @@ int	*find_lis_and_length(int *stackNumbers, int size, int *len)
 {
 	int	*lis;
 	int	*prev;
-	int	endIndex;
+	int	end_index;
 
 	lis = (int *)malloc(size * sizeof(int));
 	prev = (int *)malloc(size * sizeof(int));
@@ -87,8 +87,8 @@ int	*find_lis_and_length(int *stackNumbers, int size, int *len)
 		write_error();
 	init_lis_prev_val(lis, prev, size);
 	update_lis_prev_val(lis, prev, stackNumbers, size);
-	*len = find_max_length_of_lis(lis, size, &endIndex);
-	return (construct_lis(stackNumbers, prev, *len, endIndex));
+	*len = find_max_length_of_lis(lis, size, &end_index);
+	return (construct_lis(stackNumbers, prev, *len, end_index));
 }
 
 int	*define_lis(int *stackNumbers, int size, int *len)

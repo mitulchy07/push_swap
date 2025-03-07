@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructionCalculateNCopy.c                     :+:      :+:    :+:   */
+/*   instr_calc_copy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2025/01/29 19:49:24 by hchowdhu          #+#    #+#             */
-/*   updated: 2025/02/27 20:20:08 by hchowdhu         ###   ########.fr       */
+/*   Created: 2025/01/29 19:49:47 by hchowdhu          #+#    #+#             */
+/*   Updated: 2025/03/04 14:08:34 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,29 @@ int	count_moves_in_stack_b(int len, int size)
 	return (len);
 }
 
-int	count_moves_in_stack_a(t_list *stackA, int nb, int size)
+int	count_moves_in_stack_a(t_list *stack_a, int nb, int size)
 {
 	t_list	*tmp;
 	int		i;
 
-	tmp = stackA;
-	i = get_max_or_min_value(stackA, nb, size);
+	tmp = stack_a;
+	i = get_max_or_min_value(stack_a, nb, size);
 	if (i != size + 1)
 		return (count_moves_in_stack_b(i, size));
 	while (tmp->next != NULL)
 		tmp = tmp->next;
-	if (nb < stackA->number && nb > tmp->number)
+	if (nb < stack_a->number && nb > tmp->number)
 		return (0);
 	i = 1;
-	while (!(nb > stackA->number && nb < (stackA->next)->number))
+	while (!(nb > stack_a->number && nb < (stack_a->next)->number))
 	{
-		stackA = stackA->next;
+		stack_a = stack_a->next;
 		i++;
 	}
 	return (count_moves_in_stack_b(i, size));
 }
 
-int	*copy_stack_number_values(t_list *stackA, int size)
+int	*copy_stack_number_values(t_list *stack_a, int size)
 {
 	int	*arr;
 	int	i;
@@ -63,15 +63,15 @@ int	*copy_stack_number_values(t_list *stackA, int size)
 	arr = (int *) malloc (sizeof(int) * size + 1);
 	if (!arr)
 		write_error();
-	while (stackA != NULL)
+	while (stack_a != NULL)
 	{
-		arr[i++] = (stackA)->number;
-		stackA = (stackA)->next;
+		arr[i++] = (stack_a)->number;
+		stack_a = (stack_a)->next;
 	}
 	return (arr);
 }
 
-int	*copy_integer_array(int	*arr, int size)
+int	*copy_integer_arr_ay(int	*arr, int size)
 {
 	int	i;
 	int	*copy;

@@ -1,52 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructionMaxnmin.c                              :+:      :+:    :+:   */
+/*   instr_max_min.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hchowdhu <hchowdhu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2025/01/29 19:49:13 by hchowdhu          #+#    #+#             */
-/*   updated: 2025/02/27 20:20:08 by hchowdhu         ###   ########.fr       */
+/*   Created: 2025/01/29 19:49:47 by hchowdhu          #+#    #+#             */
+/*   Updated: 2025/03/04 14:08:34 by hchowdhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-int	return_max_or_min_value(int nb, int *maxNMin, int size)
+int	return_max_or_min_value(int nb, int *max_n_min, int size)
 {
-	if (nb > maxNMin[0])
-		return (maxNMin[2]);
-	if (nb < maxNMin[1])
-		return (maxNMin[3]);
+	if (nb > max_n_min[0])
+		return (max_n_min[2]);
+	if (nb < max_n_min[1])
+		return (max_n_min[3]);
 	return (size + 1);
 }
 
-int	get_max_or_min_value(t_list *stackA, int nb, int size)
+int	get_max_or_min_value(t_list *stack_a, int nb, int size)
 {
-	int	maxNMin[5];
+	int	max_n_min[5];
 
-	maxNMin[0] = stackA->number;
-	maxNMin[1] = stackA->number;
-	maxNMin[2] = 0;
-	maxNMin[3] = 0;
-	maxNMin[4] = 1;
-	while (stackA != NULL)
+	max_n_min[0] = stack_a->number;
+	max_n_min[1] = stack_a->number;
+	max_n_min[2] = 0;
+	max_n_min[3] = 0;
+	max_n_min[4] = 1;
+	while (stack_a != NULL)
 	{
-		if (stackA->number >= maxNMin[0])
+		if (stack_a->number >= max_n_min[0])
 		{
-			maxNMin[0] = stackA->number;
-			maxNMin[2] = maxNMin[4];
+			max_n_min[0] = stack_a->number;
+			max_n_min[2] = max_n_min[4];
 		}
-		if (stackA->number < maxNMin[1])
+		if (stack_a->number < max_n_min[1])
 		{
-			maxNMin[1] = stackA->number;
-			maxNMin[3] = maxNMin[4] - 1;
+			max_n_min[1] = stack_a->number;
+			max_n_min[3] = max_n_min[4] - 1;
 		}
-		stackA = stackA->next;
-		maxNMin[4]++;
+		stack_a = stack_a->next;
+		max_n_min[4]++;
 	}
-	return (return_max_or_min_value(nb, maxNMin, size));
+	return (return_max_or_min_value(nb, max_n_min, size));
 }
 
 int	min_number_in_stack(int a, int b)
@@ -81,28 +81,28 @@ int	max_number_in_stack(int a, int b)
 		return (a);
 }
 
-void	find_minimum_in_stack(t_list **stackA, int size)
+void	find_minimum_in_stack(t_list **stack_a, int size)
 {
 	int		pos;
-	int		posMin;
+	int		pos_min;
 	int		min;
 	t_list	*tmp;
 
-	posMin = 0;
+	pos_min = 0;
 	pos = 0;
-	tmp = *stackA;
+	tmp = *stack_a;
 	min = tmp->number;
 	while (pos < size)
 	{
 		if (min > tmp->number)
 		{
 			min = tmp->number;
-			posMin = pos;
+			pos_min = pos;
 		}
 		tmp = tmp->next;
 		pos++;
 	}
 	tmp = NULL;
-	pos = count_moves_in_stack_b(posMin, size);
-	push_minimum_to_top(pos, 0, stackA, &tmp);
+	pos = count_moves_in_stack_b(pos_min, size);
+	push_minimum_to_top(pos, 0, stack_a, &tmp);
 }
